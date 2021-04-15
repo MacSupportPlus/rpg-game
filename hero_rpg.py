@@ -8,33 +8,46 @@ class Character:
         self.character_health = character_health
         self.character_power = character_power
 
-    def attack(self, character_health):
-        self.character_health -= self.character_power
-        print("You do {} damage to the opponent.".format(self.character_power))
+    def attack(self, enemy):
+        enemy.character_health -= self.character_power
+        print("{} gave {} damage to the {}  .".format(self.name, self.character_power, enemy.name))
+    
 
     def alive(self):
         if self.character_health > 0:
             print('You are alive keep playing')
             return self.character_health
         else:
-            print(f"{Character} is Dead {character} Lose")
+            print(f"{Character} is Dead {Character} Lose")
 
     def print_status(self):
         print("I have {} health and {} power.".format(self.character_health, self.character_power))
 
     
 class Hero(Character):
+    
+    def __init__(self, hero_health, hero_power):
+        self.character_health = hero_health
+        self.character_power = hero_power
+        self.name = "Hero"
     def characterType(self):
         print("I am a hero")
 
 
 class Goblin(Character): 
+    def __init__(self, character_health, character_power):
+        self.character_health = character_health
+        self.character_power = character_power
+        self.name = "Goblin"
+    
     def characterType(self):
         print("I am a goblin!!")
 
 class Zombie(Character): 
-    def characterType(self):
-        print("I am a zombie")
+    def __init__(self, character_health, character_power):
+        self.character_health = character_health
+        self.character_power = character_power
+        self.name = "Zombie"
 
 superHero = Hero(10, 5)
 greenGoblin = Goblin(6,2)
